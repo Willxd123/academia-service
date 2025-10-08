@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: grupos-service
+    container_name: Academia-Service
     ports:
-      - "${PORT:-3001}:3001"
+      - "${PORT:-3003}:3003"
     environment:
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}

@@ -28,12 +28,12 @@ async function bootstrap() {
   // Configuración de Swagger
   const config = new DocumentBuilder()
     .setTitle('Grupos Service API')
-    .setDescription('API para gestión de Grupos, Horarios, Aulas y Módulos')
+    .setDescription('API para gestión de carreras, facultades, materia-plan y plan-estudio')
     .setVersion('1.0')
-    .addTag('modulos')
-    .addTag('aulas')
-    .addTag('grupos')
-    .addTag('horarios')
+    .addTag('carreras')
+    .addTag('facultades')
+    .addTag('materia-plan')
+    .addTag('plan-estudio')
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
