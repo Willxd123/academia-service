@@ -15,11 +15,11 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_SSL=${DATABASE_SSL}
-      - PORT=3001
+      - PORT=3003
     restart: unless-stopped
     networks:
-      - app-network
+      - microservicios-topicos
 
 networks:
-  app-network:
-    driver: bridge
+  microservicios-topicos:
+    external: true
