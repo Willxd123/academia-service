@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  grupos-service:
+  academia-service:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: Academia-Service
+    container_name: academia-Service
     ports:
       - "${PORT:-3003}:3003"
     environment:
