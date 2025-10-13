@@ -1,3 +1,4 @@
+import { firstValueFrom } from 'rxjs';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -61,13 +62,19 @@ export class MateriaPlanService {
     return { message: `MateriaPlan ${id} eliminada correctamente` };
   }
 
-  private async validarMateria(materia_id: number): Promise<boolean> {
+  private async validarMateria(materiaId: number): Promise<boolean> {
     try {
-      await this.httpService
-        .get(`http://localhost:3000/api/materia/${materia_id}`)
-        .toPromise();
+      const url = `http://materias-service:3000/api/materia/${materiaId}`;
+      console.log('🔍 Validando materia:', url);
+      
+      const response = await firstValueFrom(
+        this.httpService.get(url)
+      );
+      
+      console.log('✅ Materia encontrada:', response.data);
       return true;
-    } catch {
+    } catch (error) {
+      console.error('❌ Error validando materia:', error.message);
       return false;
     }
   }
