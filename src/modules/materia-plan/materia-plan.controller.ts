@@ -1,6 +1,18 @@
-import {Controller,Get,Post,Body,Patch,Param,Delete,
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
 } from '@nestjs/common';
-import {ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody,
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiParam,
+  ApiBody,
 } from '@nestjs/swagger';
 import { MateriaPlanService } from './materia-plan.service';
 import { CreateMateriaPlanDto } from './dto/create-materia-plan.dto';
@@ -15,7 +27,11 @@ export class MateriaPlanController {
   @Post()
   @ApiOperation({ summary: 'Crear relación materia-plan' })
   @ApiBody({ type: CreateMateriaPlanDto })
-  @ApiResponse({ status: 201, description: 'Relación creada exitosamente', type: MateriaPlan })
+  @ApiResponse({
+    status: 201,
+    description: 'Relación creada exitosamente',
+    type: MateriaPlan,
+  })
   @ApiResponse({ status: 400, description: 'Datos inválidos' })
   async create(@Body() dto: CreateMateriaPlanDto) {
     return this.materiaPlanService.create(dto);
@@ -23,7 +39,11 @@ export class MateriaPlanController {
 
   @Get()
   @ApiOperation({ summary: 'Obtener todas las relaciones' })
-  @ApiResponse({ status: 200, description: 'Lista de relaciones', type: [MateriaPlan] })
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de relaciones',
+    type: [MateriaPlan],
+  })
   async findAll() {
     return this.materiaPlanService.findAll();
   }
@@ -31,7 +51,11 @@ export class MateriaPlanController {
   @Get(':id')
   @ApiOperation({ summary: 'Obtener relación por ID' })
   @ApiParam({ name: 'id', type: Number, example: 1 })
-  @ApiResponse({ status: 200, description: 'Relación encontrada', type: MateriaPlan })
+  @ApiResponse({
+    status: 200,
+    description: 'Relación encontrada',
+    type: MateriaPlan,
+  })
   @ApiResponse({ status: 404, description: 'Relación no encontrada' })
   async findOne(@Param('id') id: string) {
     return this.materiaPlanService.findOne(+id);
@@ -41,7 +65,11 @@ export class MateriaPlanController {
   @ApiOperation({ summary: 'Actualizar relación' })
   @ApiParam({ name: 'id', type: Number, example: 1 })
   @ApiBody({ type: UpdateMateriaPlanDto })
-  @ApiResponse({ status: 200, description: 'Relación actualizada', type: MateriaPlan })
+  @ApiResponse({
+    status: 200,
+    description: 'Relación actualizada',
+    type: MateriaPlan,
+  })
   @ApiResponse({ status: 404, description: 'Relación no encontrada' })
   async update(@Param('id') id: string, @Body() dto: UpdateMateriaPlanDto) {
     return this.materiaPlanService.update(+id, dto);
@@ -55,4 +83,5 @@ export class MateriaPlanController {
   async remove(@Param('id') id: string) {
     return this.materiaPlanService.remove(+id);
   }
+
 }

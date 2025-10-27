@@ -7,6 +7,12 @@ export class MateriaPlan {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ name: 'materia_id' })
+  materia_id: number;
+
+  @Column({ name: 'plan_estudio_id' })
+  plan_estudio_id: number;
+
   @ManyToOne(() => Materia)
   @JoinColumn({ name: 'materia_id' })
   materia: Materia;

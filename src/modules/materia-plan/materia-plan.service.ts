@@ -24,8 +24,10 @@ export class MateriaPlanService {
     if (!isValidMateria) {
       throw new NotFoundException(`Materia con ID ${dto.materia_id} no encontrada`);
     }
-
+  
     const entity = this.repo.create({
+      materia_id: dto.materia_id,
+      plan_estudio_id: dto.plan_estudio_id,
       materia: { id: dto.materia_id },
       planEstudio: { id: dto.plan_estudio_id },
     });
@@ -64,7 +66,7 @@ export class MateriaPlanService {
 
   private async validarMateria(materiaId: number): Promise<boolean> {
     try {
-      const url = `http://materias-service:3000/api/materia/${materiaId}`;
+      const url = `http://localhost:3000/api/materia/${materiaId}`;
       console.log('🔍 Validando materia:', url);
       
       const response = await firstValueFrom(
@@ -78,4 +80,5 @@ export class MateriaPlanService {
       return false;
     }
   }
+ 
 }
