@@ -66,7 +66,7 @@ export class MateriaPlanService {
 
   private async validarMateria(materiaId: number): Promise<boolean> {
     try {
-      const url = `http://localhost:3000/api/materia/${materiaId}`;
+      const url = `http://materias-service:3000/api/materia/${materiaId}`;
       console.log('🔍 Validando materia:', url);
       
       const response = await firstValueFrom(
